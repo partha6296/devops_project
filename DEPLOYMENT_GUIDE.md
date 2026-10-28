@@ -173,7 +173,7 @@ In `gitops/argo-apps/root-application.yaml`, ensure the `repoURL` points to your
 ```yaml
 spec:
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
 ```
 
 ### 5.4 Deploy the Root App-of-Apps

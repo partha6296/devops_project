@@ -11,7 +11,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/observability
     directory:

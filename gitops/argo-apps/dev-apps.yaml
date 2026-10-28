@@ -11,7 +11,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/environments/dev
     directory:
@@ -40,7 +40,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/charts/microservice
     helm:
@@ -70,7 +70,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/charts/microservice
     helm:
@@ -100,7 +100,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/charts/microservice
     helm:
@@ -130,7 +130,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/partha6296/devops.git'
+    repoURL: 'https://github.com/partha6296/devops_project.git'
     targetRevision: HEAD
     path: gitops/charts/microservice
     helm:
