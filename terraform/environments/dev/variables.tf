@@ -69,7 +69,7 @@ variable "cluster_version" {
 variable "eks_instance_types" {
   description = "Instance types for EKS worker nodes"
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["t3.small"]
 }
 
 variable "eks_ami_type" {

@@ -26,7 +26,7 @@ variable "eks_nodes_security_group_id" {
 variable "instance_types" {
   description = "EC2 instance types for the node group"
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["t3.small"]
 }
 
 variable "capacity_type" {
