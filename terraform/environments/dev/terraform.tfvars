@@ -15,7 +15,7 @@ enable_vpc_endpoints = false # Set false in dev to avoid ~$100/mo interface endp
 cluster_version    = "1.34"
 eks_instance_types = ["t3.small"]
 eks_ami_type       = "AL2023_x86_64_STANDARD"
-eks_desired_size   = 2
+eks_desired_size   = 3
 eks_min_size       = 2
 eks_max_size       = 4
 
