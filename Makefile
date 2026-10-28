@@ -49,6 +49,16 @@ app-status: ## Check the status of microservice pods, services, and ingress
 	@echo "📋 Microservices in namespace [taskapp-$(ENV)]:"
 	@kubectl get pods,svc,ingress,hpa -n taskapp-$(ENV) -o wide 2>/dev/null || echo "Namespace taskapp-$(ENV) not active yet."
 
+connect-alb: ## Register running frontend pod IP into the ALB target group
+	@echo "🔗 Connecting frontend pod to ALB target group..."
+	@TG_ARN=$$(aws elbv2 describe-target-groups --names cloudops-taskapp-$(ENV)-default-tg --query "TargetGroups[0].TargetGroupArn" --output text 2>/dev/null); \
+	POD_IP=$$(kubectl get pod -n taskapp-$(ENV) -l app.kubernetes.io/name=frontend -o jsonpath='{.items[0].status.podIP}' 2>/dev/null); \
+	if [ -z "$$POD_IP" ]; then echo "❌ Frontend pod not running yet. Run 'make app-status' to check."; exit 1; fi; \
+	echo "Found Frontend Pod IP: $$POD_IP"; \
+	echo "Target Group: $$TG_ARN"; \
+	aws elbv2 register-targets --target-group-arn $$TG_ARN --targets Id=$$POD_IP,Port=3000; \
+	echo "✅ Successfully registered frontend pod ($$POD_IP:3000) to ALB target group!"
+
 monitoring-status: ## Check the status of Prometheus, Grafana, Loki & Promtail
 	@echo "📊 Observability stack in namespace [monitoring]:"
 	@kubectl get pods,svc,daemonset -n monitoring -o wide 2>/dev/null || echo "Namespace monitoring not active yet."

@@ -1,6 +1,6 @@
 nameOverride: notification-service
 fullnameOverride: notification-service
-replicaCount: 2
+replicaCount: 1
 environment: dev
 
 image:
@@ -23,7 +23,7 @@ resources:
 
 autoscaling:
   enabled: true
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 4
   targetCPUUtilizationPercentage: 75
 
