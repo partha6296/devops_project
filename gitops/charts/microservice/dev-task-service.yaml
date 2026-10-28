@@ -1,0 +1,38 @@
+nameOverride: task-service
+fullnameOverride: task-service
+replicaCount: 1
+environment: dev
+
+image:
+  repository: 712481457438.dkr.ecr.us-east-1.amazonaws.com/taskapp-task-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3002
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 75
+
+env:
+  PORT: "3002"
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  DB_NAME: "taskapp_task"
+  DB_USER: "postgres"
+  DB_PASSWORD: "postgrespassword"
+  USER_SERVICE_URL: "http://user-service:80"
+  NOTIFICATION_SERVICE_URL: "http://notification-service:80"

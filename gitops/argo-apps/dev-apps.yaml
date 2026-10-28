@@ -45,7 +45,7 @@ spec:
     path: gitops/charts/microservice
     helm:
       valueFiles:
-        - ../../environments/dev/user-service-values.yaml
+        - dev-user-service.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: taskapp-dev
@@ -75,7 +75,7 @@ spec:
     path: gitops/charts/microservice
     helm:
       valueFiles:
-        - ../../environments/dev/notification-service-values.yaml
+        - dev-notification-service.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: taskapp-dev
@@ -105,7 +105,7 @@ spec:
     path: gitops/charts/microservice
     helm:
       valueFiles:
-        - ../../environments/dev/task-service-values.yaml
+        - dev-task-service.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: taskapp-dev
@@ -135,7 +135,7 @@ spec:
     path: gitops/charts/microservice
     helm:
       valueFiles:
-        - ../../environments/dev/frontend-values.yaml
+        - dev-frontend.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: taskapp-dev

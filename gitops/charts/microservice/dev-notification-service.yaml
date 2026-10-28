@@ -1,0 +1,32 @@
+nameOverride: notification-service
+fullnameOverride: notification-service
+replicaCount: 1
+environment: dev
+
+image:
+  repository: 712481457438.dkr.ecr.us-east-1.amazonaws.com/taskapp-notification-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3003
+
+resources:
+  limits:
+    cpu: 150m
+    memory: 192Mi
+  requests:
+    cpu: 50m
+    memory: 96Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 75
+
+env:
+  PORT: "3003"
+  NOTIFICATION_CHANNEL: "EMAIL_SIMULATOR"

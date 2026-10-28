@@ -1,0 +1,36 @@
+nameOverride: user-service
+fullnameOverride: user-service
+replicaCount: 1
+environment: dev
+
+image:
+  repository: 712481457438.dkr.ecr.us-east-1.amazonaws.com/taskapp-user-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3001
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 75
+
+env:
+  PORT: "3001"
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  DB_NAME: "taskapp_user"
+  DB_USER: "postgres"
+  DB_PASSWORD: "postgrespassword"
