@@ -4,7 +4,7 @@ replicaCount: 2
 environment: dev
 
 image:
-  repository: taskapp-user-service
+  repository: 712481457438.dkr.ecr.us-east-1.amazonaws.com/taskapp-user-service
   tag: latest
   pullPolicy: IfNotPresent
 
